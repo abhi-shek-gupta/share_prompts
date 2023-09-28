@@ -14,7 +14,7 @@ const Home = () => {
         discover, create and share creative propsmts
       </p>
       {/* Feed  */}
-      <Feed></Feed>
+      <Feed />
     </section>
   );
 };
