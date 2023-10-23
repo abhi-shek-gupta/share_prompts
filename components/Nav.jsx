@@ -21,7 +21,7 @@ const Nav = () => {
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-centre">
         <Image
-          src="/assets/images/logo.svg"
+          src={session?.user?.image}
           alt="Promptopia Logo"
           width={30}
           height={30}
@@ -49,7 +49,7 @@ const Nav = () => {
           </div>
         ) : (
           <>
-            {providers &&
+            {providers && 
               Object.values(providers).map((provider) => (
                 <button
                   type="button"
