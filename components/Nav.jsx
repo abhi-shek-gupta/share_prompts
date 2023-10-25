@@ -85,7 +85,7 @@ const Nav = () => {
                   My Profile
                 </Link>
                 <Link
-                  href="/crate-prompt"
+                  href="/create-prompt"
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >
