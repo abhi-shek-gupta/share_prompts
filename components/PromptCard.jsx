@@ -1,6 +1,8 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
@@ -10,13 +12,15 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
     navigator.clipboard.writeText(post.prompt);
     setTimeout(() => setCopied(""), 3000);
   };
+  const { data: session } = useSession();
+  const pathName = usePathname();
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
         <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
           <Image
             src={post?.creator.image}
-            alt={"user_image"}
+            alt="user_image"
             width={40}
             height={40}
             className="rounded-full object-contain"
@@ -28,6 +32,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         </div>
         <div className="copy_btn" onClick={handleCopy}>
           <Image
+            alt="icons"
             src={
               copied === post.prompt
                 ? "/assets/icons/tick.svg"
@@ -45,6 +50,22 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       >
         {post.tag}
       </p>
+      {session?.user.id === post.creator._id && pathName === "/profile" && (
+        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+          <p
+            className="font-inter text-sm green_gradient cursor-pointer"
+            onClick={handleEdit}
+          >
+            Edit
+          </p>
+          <p
+            className="font-inter text-sm orange_gradient cursor-pointer"
+            onClick={handleDelete}
+          >
+            Delete
+          </p>
+        </div>
+      )}
     </div>
   );
 };

@@ -23,7 +23,7 @@ const Feed = () => {
     setSearchText(e.target.value);
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     const fetchPost = async () => {
       const response = await fetch("/api/prompt");
       const data = await response.json();
