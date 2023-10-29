@@ -19,7 +19,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             Your AI Prompt
           </span>
           <textarea
-            vlaue={post.prompt}
+            value={post.prompt}
             onChange={(e) => setPost({ ...post, prompt: e.target.value })}
             placeholder="Write Your prompt here..."
             required
@@ -34,7 +34,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             </span>
           </span>
           <input
-            vlaue={post.tag}
+            value={post.tag}
             onChange={(e) => setPost({ ...post, tag: e.target.value })}
             placeholder="#tag"
             required
